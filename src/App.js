@@ -2,7 +2,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import './App.css';
 
-import ResponsiveDrawer from './components/trying.component';
+import ResponsiveDrawer from './components/header.component';
 import HomePage from './pages/homepage.component';
 import SignInSide from './pages/sign-in.component';
 import SignUpSide from './pages/sign-up.component';
