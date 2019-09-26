@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -9,7 +10,6 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import Slide from '@material-ui/core/Slide';
 import { makeStyles } from '@material-ui/core/styles';
-import MenuIcon from '@material-ui/icons/Menu';
 import HomeIcon from '@material-ui/icons/HomeRounded';
 
 const useStyles = makeStyles(theme => ({
@@ -19,8 +19,14 @@ const useStyles = makeStyles(theme => ({
 	menuButton: {
 		marginLeft: theme.spacing(2)
 	},
+	homeButton: {
+		marginRight: theme.spacing(2)
+	},
 	title: {
 		flexGrow: 1
+	},
+	homeLink: {
+		color: '#fff'
 	}
 }));
 
@@ -56,26 +62,28 @@ export default function Header(props) {
 			<HideOnScroll {...props}>
 				<AppBar>
 					<Toolbar>
-						<IconButton
-							edge='start'
-							className={classes.menuButton}
-							color='inherit'
-							aria-label='menu'
-						>
-							<HomeIcon />
-						</IconButton>
+						<Link to='/' className={classes.homeLink}>
+							<IconButton
+								edge='start'
+								className={classes.homeButton}
+								color='inherit'
+								aria-label='menu'
+							>
+								<HomeIcon />
+							</IconButton>
+						</Link>
 						<Typography variant='h6' className={classes.title}></Typography>
 						<Button color='inherit'>Trending</Button>
 						<Button color='inherit'>Profile</Button>
 						<Button color='inherit'>Login</Button>
-						<IconButton
-							edge='start'
+						{/* <IconButton
+							edge='end'
 							className={classes.menuButton}
 							color='inherit'
 							aria-label='menu'
 						>
 							<MenuIcon />
-						</IconButton>
+						</IconButton> */}
 					</Toolbar>
 				</AppBar>
 			</HideOnScroll>
