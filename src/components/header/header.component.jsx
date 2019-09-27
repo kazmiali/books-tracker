@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+
 import { makeStyles } from '@material-ui/core/styles';
 import {
 	Drawer,
@@ -17,12 +18,14 @@ import {
 	Typography
 } from '@material-ui/core';
 
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
-import HomeIcon from '@material-ui/icons/HomeRounded';
-import MenuIcon from '@material-ui/icons/Menu';
-import HotIcon from '@material-ui/icons/Whatshot';
-import ProfileIcon from '@material-ui/icons/AccountCircle';
+import {
+	HomeRounded,
+	Menu,
+	Whatshot,
+	AccountCircle,
+	VpnKey,
+	AddCircleOutline
+} from '@material-ui/icons';
 
 const useStyles = makeStyles(theme => ({
 	root: {
@@ -37,8 +40,16 @@ const useStyles = makeStyles(theme => ({
 	title: {
 		flexGrow: 1
 	},
-	homeLink: {
-		color: '#fff'
+	headerLink: {
+		color: '#fff',
+		textDecoration: 'none'
+	},
+	drawerLink: {
+		color: 'rgba(0,0,0,0.87)',
+		textDecoration: 'none'
+	},
+	IconMargin: {
+		marginRight: '2px'
 	},
 	list: {
 		width: 250
@@ -58,21 +69,17 @@ const useStyles = makeStyles(theme => ({
 	}
 }));
 
-function HideOnScroll(props) {
-	const { children, window } = props;
-	// Note that you normally won't need to set the window ref as useScrollTrigger
-	// will default to window.
-	// This is only being set here because the demo is in an iframe.
-	const trigger = useScrollTrigger({ target: window ? window() : undefined });
-
+const HideOnScroll = props => {
+	const { children } = props;
+	const trigger = useScrollTrigger();
 	return (
 		<Slide appear={false} direction='down' in={!trigger}>
 			{children}
 		</Slide>
 	);
-}
+};
 
-export default function TemporaryDrawer(props) {
+const Header = props => {
 	const classes = useStyles();
 	const [state, setState] = React.useState({
 		top: false,
@@ -100,14 +107,38 @@ export default function TemporaryDrawer(props) {
 			onKeyDown={toggleDrawer(side, false)}
 		>
 			<List>
-				{['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-					<ListItem button key={text}>
+				<Link to='/' className={classes.drawerLink}>
+					<ListItem button>
 						<ListItemIcon>
-							{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+							<Whatshot />
 						</ListItemIcon>
-						<ListItemText primary={text} />
+						<ListItemText primary='Trending' />
 					</ListItem>
-				))}
+				</Link>
+				<Link to='/profile' className={classes.drawerLink}>
+					<ListItem button>
+						<ListItemIcon>
+							<AccountCircle />
+						</ListItemIcon>
+						<ListItemText primary='Profile' />
+					</ListItem>
+				</Link>
+				<Link to='/login' className={classes.drawerLink}>
+					<ListItem button>
+						<ListItemIcon>
+							<VpnKey />
+						</ListItemIcon>
+						<ListItemText primary='Login' />
+					</ListItem>
+				</Link>
+				<Link to='/signup' className={classes.drawerLink}>
+					<ListItem button>
+						<ListItemIcon>
+							<AddCircleOutline />
+						</ListItemIcon>
+						<ListItemText primary='Signup' />
+					</ListItem>
+				</Link>
 			</List>
 		</div>
 	);
@@ -124,22 +155,37 @@ export default function TemporaryDrawer(props) {
 							color='inherit'
 							aria-label='menu'
 						>
-							<Link to='/' className={classes.homeLink}>
-								<HomeIcon />
+							<Link to='/' className={classes.headerLink}>
+								<HomeRounded />
 							</Link>
 						</IconButton>
 						<Typography variant='h6' className={classes.title}></Typography>
 
-						<Button className={classes.hideButtonDownSm} color='inherit'>
-							<HotIcon />
-							Trending
-						</Button>
-						<Button className={classes.hideButtonDownSm} color='inherit'>
-							Profile
-						</Button>
-						<Button className={classes.hideButtonDownSm} color='inherit'>
-							Login
-						</Button>
+						<Link to='/' className={classes.headerLink}>
+							<Button className={classes.hideButtonDownSm} color='inherit'>
+								<Whatshot className={classes.IconMargin} />
+								Trending
+							</Button>
+						</Link>
+						<Link to='/login' className={classes.headerLink}>
+							<Button className={classes.hideButtonDownSm} color='inherit'>
+								<AccountCircle className={classes.IconMargin} />
+								Profile
+							</Button>
+						</Link>
+						<Link to='/login' className={classes.headerLink}>
+							<Button className={classes.hideButtonDownSm} color='inherit'>
+								<VpnKey className={classes.IconMargin} />
+								Login
+							</Button>
+						</Link>
+
+						<Link to='/signup' className={classes.headerLink}>
+							<Button className={classes.hideButtonDownSm} color='inherit'>
+								<AddCircleOutline className={classes.IconMargin} />
+								Signup
+							</Button>
+						</Link>
 
 						<IconButton
 							onClick={toggleDrawer('right', true)}
@@ -148,7 +194,7 @@ export default function TemporaryDrawer(props) {
 							color='inherit'
 							aria-label='menu'
 						>
-							<MenuIcon />
+							<Menu />
 						</IconButton>
 					</Toolbar>
 				</AppBar>
@@ -164,4 +210,6 @@ export default function TemporaryDrawer(props) {
 			</Drawer>
 		</div>
 	);
-}
+};
+
+export default Header;

@@ -17,8 +17,8 @@ function Copyright() {
 	return (
 		<Typography variant='body2' color='textSecondary' align='center'>
 			{'Copyright © '}
-			<Link color='inherit' href='https://material-ui.com/'>
-				Your Website
+			<Link color='inherit' to='/'>
+				Book Tracker
 			</Link>{' '}
 			{new Date().getFullYear()}
 			{'.'}
@@ -138,7 +138,7 @@ export default function SignUpSide() {
 						</Button>
 						<Grid container justify='flex-end'>
 							<Grid item>
-								<Link to='/signin' variant='body2'>
+								<Link to={'/signin'} variant='body2'>
 									Already have an account? Sign in
 								</Link>
 							</Grid>
