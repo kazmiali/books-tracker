@@ -13,7 +13,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 
-function Copyright() {
+const Copyright = () => {
 	return (
 		<Typography variant='body2' color='textSecondary' align='center'>
 			{'Copyright © '}
@@ -24,7 +24,7 @@ function Copyright() {
 			{'.'}
 		</Typography>
 	);
-}
+};
 
 const useStyles = makeStyles(theme => ({
 	root: {
@@ -55,7 +55,7 @@ const useStyles = makeStyles(theme => ({
 	}
 }));
 
-export default function SignUpSide() {
+const SignUpSide = () => {
 	const classes = useStyles();
 
 	return (
@@ -151,4 +151,6 @@ export default function SignUpSide() {
 			</Grid>
 		</Grid>
 	);
-}
+};
+
+export default SignUpSide;
