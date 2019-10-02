@@ -29,7 +29,9 @@ import {
 
 const useStyles = makeStyles(theme => ({
 	root: {
-		flexGrow: 0
+		flexGrow: 1,
+		maxWidth: '100vw',
+		overflow: 'hidden'
 	},
 	menuButton: {
 		marginLeft: theme.spacing(2)
