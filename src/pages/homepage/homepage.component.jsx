@@ -1,12 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
+
+import { Grid, Button, Typography, Fab, Modal } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import Button from '@material-ui/core/Button';
-import AddBox from '@material-ui/icons/AddBox';
+import { Add, AddBox } from '@material-ui/icons';
+
 import BookCardList from '../../components/book-card-list/book-card-list.component';
-import Typography from '@material-ui/core/Typography';
-import Fab from '@material-ui/core/Fab';
-import AddIcon from '@material-ui/icons/Add';
+import ModalForm from '../../components/modal-form/modal-form.component';
 
 const useStyles = makeStyles(theme => ({
 	root: {
@@ -55,6 +54,15 @@ const useStyles = makeStyles(theme => ({
 
 const HomePage = () => {
 	const classes = useStyles();
+	const [open, setOpen] = useState(false);
+
+	const handleOpen = () => {
+		setOpen(true);
+	};
+
+	const handleClose = () => {
+		setOpen(false);
+	};
 
 	return (
 		<div className={classes.root}>
@@ -64,6 +72,7 @@ const HomePage = () => {
 						Your Books
 					</Typography>
 					<Button
+						onClick={handleOpen}
 						variant='contained'
 						color='secondary'
 						className={`${classes.button} ${classes.hideButtonDownSm}`}
@@ -79,9 +88,18 @@ const HomePage = () => {
 				aria-label={'Add'}
 				className={`${classes.fab} ${classes.hideFabUpSm}`}
 				color={'primary'}
+				onClick={handleOpen}
 			>
-				<AddIcon />
+				<Add />
 			</Fab>
+			<Modal
+				aria-labelledby='simple-modal-title'
+				aria-describedby='simple-modal-description'
+				open={open}
+				onClose={handleClose}
+			>
+				<ModalForm handleClose={handleClose} />
+			</Modal>
 		</div>
 	);
 };

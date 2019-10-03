@@ -70,7 +70,7 @@ const ProgressBar = () => {
 				<BorderLinearProgress
 					className={classes.progressBar}
 					variant='determinate'
-					color='warning'
+					color='secondary'
 					value={progress}
 				/>
 				<AddCircleIcon
