@@ -1,10 +1,9 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
-import ButtonBase from '@material-ui/core/ButtonBase';
+import { Grid, Paper, Typography, ButtonBase } from '@material-ui/core';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+
+import ProgressBar from '../progress-bar/progress-bar.component';
 
 const useStyles = makeStyles(theme => ({
 	root: {
@@ -45,6 +44,9 @@ const BookCard = props => {
 		<div className={classes.root}>
 			<Paper className={classes.paper}>
 				<Grid container spacing={2}>
+					<Grid item xs={12}>
+						<ProgressBar />
+					</Grid>
 					<Grid item>
 						<ButtonBase className={classes.image}>
 							<img
