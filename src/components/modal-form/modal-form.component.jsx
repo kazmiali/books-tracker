@@ -1,15 +1,15 @@
 import React from 'react';
-import Avatar from '@material-ui/core/Avatar';
-import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
-import Grid from '@material-ui/core/Grid';
-import MenuBookIcon from '@material-ui/icons/MenuBook';
-import HighlightOffIcon from '@material-ui/icons/HighlightOff';
-import HomeIcon from '@material-ui/icons/Home';
-import Typography from '@material-ui/core/Typography';
+import {
+	Avatar,
+	Button,
+	CssBaseline,
+	TextField,
+	Grid,
+	Typography,
+	Container
+} from '@material-ui/core';
+import { HighlightOff, MenuBook, Home } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
 
 const useStyles = makeStyles(theme => ({
 	'@global': {
@@ -48,11 +48,6 @@ const useStyles = makeStyles(theme => ({
 		[theme.breakpoints.down('600')]: {
 			marginTop: '4rem'
 		}
-		// display: 'flex',
-		// justifyContent: 'center',
-		// alignItems: 'center',
-		// maxWidth: '100vw',
-		// height: '90vh'
 	},
 	textAlignCenter: {
 		textAlign: 'center'
@@ -66,9 +61,8 @@ const useStyles = makeStyles(theme => ({
 	}
 }));
 
-const ModalForm = props => {
+const ModalForm = ({ handleClose }) => {
 	const classes = useStyles();
-	const { handleClose } = props;
 	return (
 		<div className={classes.flexCenter}>
 			<Container component='main' maxWidth='xs' className={classes.container}>
@@ -77,13 +71,13 @@ const ModalForm = props => {
 					<Grid container spacing={2}>
 						<Grid item xs={12} className={classes.flexSpaceBetween}>
 							<Avatar className={classes.avatar} onClick={handleClose}>
-								<HomeIcon />
+								<Home />
 							</Avatar>
 							<Avatar className={classes.avatar}>
-								<MenuBookIcon />
+								<MenuBook />
 							</Avatar>
 							<Avatar className={classes.avatar} onClick={handleClose}>
-								<HighlightOffIcon />
+								<HighlightOff />
 							</Avatar>
 						</Grid>
 						<Grid item xs={12} className={classes.textAlignCenter}>
@@ -144,7 +138,7 @@ const ModalForm = props => {
 									type='submit'
 									fullWidth
 									variant='contained'
-									color='primary'
+									color='secondary'
 									className={classes.submit}
 								>
 									Add Book

@@ -6,25 +6,13 @@ import AddCircleIcon from '@material-ui/icons/AddCircle';
 import RemoveCircleIcon from '@material-ui/icons/RemoveCircle';
 
 const useStyles = makeStyles(theme => ({
-	addButton: {
-		margin: theme.spacing(0, 0, 0, 1),
-		[theme.breakpoints.down('600')]: {
-			margin: theme.spacing(0, 0, 0, 0.4)
-		}
-	},
-	subtractButton: {
-		margin: theme.spacing(0, 0, 0, 1.5),
-		[theme.breakpoints.down('600')]: {
-			margin: theme.spacing(0, 0, 0, 1.1)
-		}
-	},
 	progressBar: {
 		maxWidth: '100%',
-		margin: theme.spacing(1, 0, 0, 0)
+		margin: theme.spacing(1, 2, 0, 2)
 	},
 	gridCenter: {
 		display: 'grid',
-		gridTemplateColumns: '1fr 8fr 1fr'
+		gridTemplateColumns: '1fr 24fr 1fr'
 	}
 }));
 
@@ -75,7 +63,7 @@ const ProgressBar = () => {
 				/>
 				<AddCircleIcon
 					color='secondary'
-					className={`${classes.button} ${classes.subtractButton} `}
+					className={`${classes.button} `}
 					aria-label='Decrease'
 					onClick={() => handleAddProgress()}
 				/>

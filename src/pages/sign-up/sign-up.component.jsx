@@ -1,16 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Avatar from '@material-ui/core/Avatar';
-import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import Paper from '@material-ui/core/Paper';
-import Box from '@material-ui/core/Box';
-import Grid from '@material-ui/core/Grid';
+
+import {
+	Avatar,
+	Button,
+	CssBaseline,
+	TextField,
+	FormControlLabel,
+	Checkbox,
+	Paper,
+	Box,
+	Grid,
+	Typography
+} from '@material-ui/core';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 
 const Copyright = () => {
@@ -18,7 +21,7 @@ const Copyright = () => {
 		<Typography variant='body2' color='textSecondary' align='center'>
 			{'Copyright © '}
 			<Link color='inherit' to='/'>
-				Book Tracker
+				Muhammadali.dev
 			</Link>{' '}
 			{new Date().getFullYear()}
 			{'.'}
@@ -121,7 +124,7 @@ const SignUpSide = () => {
 							<Grid item xs={12}>
 								<FormControlLabel
 									control={
-										<Checkbox value='allowExtraEmails' color='primary' />
+										<Checkbox value='allowExtraEmails' color='secondary' />
 									}
 									label='I want to receive inspiration, marketing promotions and updates via email.'
 								/>
@@ -131,7 +134,7 @@ const SignUpSide = () => {
 							type='submit'
 							fullWidth
 							variant='contained'
-							color='primary'
+							color='secondary'
 							className={classes.submit}
 						>
 							Sign Up

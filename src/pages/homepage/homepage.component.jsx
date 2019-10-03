@@ -18,14 +18,8 @@ const useStyles = makeStyles(theme => ({
 		textAlign: 'center',
 		color: theme.palette.text.secondary
 	},
-	firstBookCard: {
-		marginTop: theme.spacing(2)
-	},
 	button: {
 		margin: theme.spacing(1.5, 0, 0, 1)
-	},
-	input: {
-		display: 'none'
 	},
 	spaceBetweenWrap: {
 		display: 'flex',
@@ -93,8 +87,8 @@ const HomePage = () => {
 				<Add />
 			</Fab>
 			<Modal
-				aria-labelledby='simple-modal-title'
-				aria-describedby='simple-modal-description'
+				aria-labelledby='adding book modal'
+				aria-describedby='adding book modal for entering book data'
 				open={open}
 				onClose={handleClose}
 			>

@@ -50,7 +50,7 @@ const useStyles = makeStyles(theme => ({
 		color: 'rgba(0,0,0,0.87)',
 		textDecoration: 'none'
 	},
-	IconMargin: {
+	iconMargin: {
 		marginRight: '2px'
 	},
 	list: {
@@ -84,13 +84,10 @@ const HideOnScroll = props => {
 const Header = props => {
 	const classes = useStyles();
 	const [state, setState] = React.useState({
-		top: false,
-		left: false,
-		bottom: false,
 		right: false
 	});
 
-	const toggleDrawer = (side, open) => event => {
+	const toggleDrawer = open => event => {
 		if (
 			event.type === 'keydown' &&
 			(event.key === 'Tab' || event.key === 'Shift')
@@ -98,15 +95,15 @@ const Header = props => {
 			return;
 		}
 
-		setState({ ...state, [side]: open });
+		setState({ ...state, right: open });
 	};
 
 	const sideList = side => (
 		<div
 			className={classes.list}
 			role='presentation'
-			onClick={toggleDrawer(side, false)}
-			onKeyDown={toggleDrawer(side, false)}
+			onClick={toggleDrawer(false)}
+			onKeyDown={toggleDrawer(false)}
 		>
 			<List>
 				<Link to='/' className={classes.drawerLink}>
@@ -149,7 +146,7 @@ const Header = props => {
 		<div className={classes.root}>
 			<CssBaseline />
 			<HideOnScroll {...props}>
-				<AppBar>
+				<AppBar color='secondary'>
 					<Toolbar>
 						<IconButton
 							edge='start'
@@ -165,32 +162,32 @@ const Header = props => {
 
 						<Link to='/' className={classes.headerLink}>
 							<Button className={classes.hideButtonDownSm} color='inherit'>
-								<Whatshot className={classes.IconMargin} />
+								<Whatshot className={classes.iconMargin} />
 								Trending
 							</Button>
 						</Link>
 						<Link to='/login' className={classes.headerLink}>
 							<Button className={classes.hideButtonDownSm} color='inherit'>
-								<AccountCircle className={classes.IconMargin} />
+								<AccountCircle className={classes.iconMargin} />
 								Profile
 							</Button>
 						</Link>
 						<Link to='/login' className={classes.headerLink}>
 							<Button className={classes.hideButtonDownSm} color='inherit'>
-								<VpnKey className={classes.IconMargin} />
+								<VpnKey className={classes.iconMargin} />
 								Login
 							</Button>
 						</Link>
 
 						<Link to='/signup' className={classes.headerLink}>
 							<Button className={classes.hideButtonDownSm} color='inherit'>
-								<AddCircleOutline className={classes.IconMargin} />
+								<AddCircleOutline className={classes.iconMargin} />
 								Signup
 							</Button>
 						</Link>
 
 						<IconButton
-							onClick={toggleDrawer('right', true)}
+							onClick={toggleDrawer(true)}
 							edge='end'
 							className={`${classes.menuButton} ${classes.hideMenuUpSm}`}
 							color='inherit'
@@ -203,11 +200,7 @@ const Header = props => {
 			</HideOnScroll>
 			<Toolbar />
 
-			<Drawer
-				anchor='right'
-				open={state.right}
-				onClose={toggleDrawer('right', false)}
-			>
+			<Drawer anchor='right' open={state.right} onClose={toggleDrawer(false)}>
 				{sideList('right')}
 			</Drawer>
 		</div>

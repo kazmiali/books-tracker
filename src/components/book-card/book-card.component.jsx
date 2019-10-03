@@ -40,7 +40,7 @@ const useStyles = makeStyles(theme => ({
 	}
 }));
 
-const BookCard = props => {
+const BookCard = () => {
 	const classes = useStyles();
 	// const { imageuri, title, author, description } = props;
 
