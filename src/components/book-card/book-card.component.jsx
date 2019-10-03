@@ -14,7 +14,7 @@ const useStyles = makeStyles(theme => ({
 	paper: {
 		padding: theme.spacing(2),
 		margin: 'auto',
-		maxWidth: 500
+		maxWidth: 700
 	},
 	image: {
 		width: 120,
@@ -33,6 +33,10 @@ const useStyles = makeStyles(theme => ({
 		[theme.breakpoints.down('400')]: {
 			fontSize: '.75rem'
 		}
+	},
+	flexCenter: {
+		display: 'flex',
+		justifyContent: 'space-between'
 	}
 }));
 
@@ -57,30 +61,26 @@ const BookCard = props => {
 						</ButtonBase>
 					</Grid>
 					<Grid item xs container>
-						<Grid item xs container direction='column' spacing={2}>
-							<Grid item xs>
-								<Typography variant='h6'>Watching You</Typography>
-								<Typography
-									variant='subtitle1'
-									className={classes.descriptionSmall}
-									color='textSecondary'
-								>
-									Author: Paulo Coelho
-								</Typography>
-								<Typography
-									className={classes.descriptionSmall}
-									variant='body2'
-									gutterBottom
-								>
-									Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-									Ipsum quo dignissimos fugit minus corporis animi amet in
-									reprehenderit deleniti ullam.
-								</Typography>
-							</Grid>
-						</Grid>
-						<Grid item>
-							<Typography className={classes.pointer} variant='subtitle1'>
-								<DeleteForeverIcon />
+						<Grid item xs container direction='column' spacing={1}>
+							<Typography className={classes.flexCenter} variant='h6'>
+								Watching You
+								<DeleteForeverIcon className={classes.pointer} />
+							</Typography>
+							<Typography
+								variant='subtitle1'
+								className={classes.descriptionSmall}
+								color='textSecondary'
+							>
+								Author: Paulo Coelho
+							</Typography>
+							<Typography
+								className={classes.descriptionSmall}
+								variant='body2'
+								gutterBottom
+							>
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum
+								quo dignissimos fugit minus corporis animi amet in reprehenderit
+								deleniti ullam.
 							</Typography>
 						</Grid>
 					</Grid>
