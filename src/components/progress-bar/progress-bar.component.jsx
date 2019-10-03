@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { makeStyles, withStyles, lighten } from '@material-ui/core/styles';
 import LinearProgress from '@material-ui/core/LinearProgress';
-import AlarmIcon from '@material-ui/icons/Alarm';
+import AddCircleIcon from '@material-ui/icons/AddCircle';
+import RemoveCircleIcon from '@material-ui/icons/RemoveCircle';
 
 const useStyles = makeStyles(theme => ({
 	addButton: {
@@ -41,24 +42,42 @@ const BorderLinearProgress = withStyles({
 
 const ProgressBar = () => {
 	const classes = useStyles();
+	const [progress, setProgress] = useState(0);
+
+	const handleAddProgress = () => {
+		if (progress === 100) {
+			return;
+		}
+		setProgress(progress + 10);
+	};
+
+	const handleDecreaseProgress = () => {
+		if (progress === 0) {
+			return;
+		}
+		setProgress(progress - 10);
+	};
+
 	return (
 		<div>
 			<div className={classes.gridCenter}>
-				<AlarmIcon
+				<RemoveCircleIcon
 					color='secondary'
 					className={classes.addButton}
 					aria-label='Increase'
+					onClick={() => handleDecreaseProgress()}
 				/>
 				<BorderLinearProgress
 					className={classes.progressBar}
 					variant='determinate'
 					color='warning'
-					value={50}
+					value={progress}
 				/>
-				<AlarmIcon
+				<AddCircleIcon
 					color='secondary'
 					className={`${classes.button} ${classes.subtractButton} `}
 					aria-label='Decrease'
+					onClick={() => handleAddProgress()}
 				/>
 			</div>
 		</div>
